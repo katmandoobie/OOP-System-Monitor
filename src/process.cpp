@@ -38,7 +38,7 @@ float Process::CpuUtilization() {
     float idleDelta = idle - prevIdle_;
 
     //set CpuUtilization_ as percentage
-    CpuUtilization_ = ((totalDelta - idleDelta)/totalDelta)*100;
+    CpuUtilization_ = ((totalDelta - idleDelta)*100)/totalDelta;
 
     //update previous values with new current values and return CpuUtilization_
     prevIOWait_ = stof(jiffs[LinuxParser::kIOwait_]);
@@ -61,7 +61,7 @@ string Process::User() {
     return user_;
 }
 long int Process::UpTime() { 
-    UpTime_ = LinuxParser::UpTime(Pid_)/sysconf(_SC_CLK_TCK);
+    UpTime_ = LinuxParser::UpTime() - LinuxParser::UpTime(Pid_);
     return UpTime_;
 }
 bool Process::operator<(Process const& a) const {
