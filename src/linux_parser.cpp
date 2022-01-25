@@ -255,7 +255,7 @@ long LinuxParser::UpTime(int pid) {
       linestream >> uptime;
     }
     
-    long var = stol(uptime);
+    long var = stol(uptime)/sysconf(_SC_CLK_TCK);
     return var;
   }
   return 0; }

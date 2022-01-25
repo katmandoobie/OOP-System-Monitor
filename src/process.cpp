@@ -60,8 +60,8 @@ string Process::Ram() {
 string Process::User() { 
     return user_;
 }
-long int Process::UpTime() { 
-    UpTime_ = LinuxParser::UpTime() - LinuxParser::UpTime(Pid_);
+long int Process::UpTime() {     
+    UpTime_ =  LinuxParser::UpTime(Pid_);
     return UpTime_;
 }
 bool Process::operator<(Process const& a) const {
