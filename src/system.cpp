@@ -1,14 +1,14 @@
 #include <unistd.h>
+#include <algorithm>
 #include <cstddef>
 #include <set>
 #include <string>
 #include <vector>
-#include <algorithm>
 
+#include "linux_parser.h"
 #include "process.h"
 #include "processor.h"
 #include "system.h"
-#include "linux_parser.h"
 
 using std::set;
 using std::size_t;
@@ -17,19 +17,19 @@ using std::vector;
 
 Processor& System::Cpu() { return this->cpu_; }
 
-//get PIDs of each process and store in vector<Process> Processes_
-//sort each process by Ram Utilization and return
-vector<Process>& System::Processes() { 
-    processes_.clear();
-    vector<int> pids = LinuxParser::Pids();
-    for(auto i: pids){
-        Process process(i);
-        process.CpuUtilization();
-        process.UpTime();
-        processes_.push_back(process);
-    }
-    std::sort(processes_.begin(), processes_.end(),std::less<Process>());
-    return processes_; 
+// get PIDs of each process and store in vector<Process> Processes_
+// sort each process by Ram Utilization and return
+vector<Process>& System::Processes() {
+  processes_.clear();
+  vector<int> pids = LinuxParser::Pids();
+  for (auto i : pids) {
+    Process process(i);
+    process.CpuUtilization();
+    process.UpTime();
+    processes_.push_back(process);
+  }
+  std::sort(processes_.begin(), processes_.end(), std::less<Process>());
+  return processes_;
 }
 
 std::string System::Kernel() { return LinuxParser::Kernel(); }
@@ -40,7 +40,6 @@ std::string System::OperatingSystem() { return LinuxParser::OperatingSystem(); }
 
 int System::RunningProcesses() { return LinuxParser::RunningProcesses(); }
 
-int System::TotalProcesses() {return LinuxParser::TotalProcesses(); }
+int System::TotalProcesses() { return LinuxParser::TotalProcesses(); }
 
-long int System::UpTime() {return LinuxParser::UpTime(); }
-
+long int System::UpTime() { return LinuxParser::UpTime(); }

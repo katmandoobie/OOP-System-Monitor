@@ -4,11 +4,10 @@
 //   /proc/stat for useful processor information
 class Processor {
  public:
-  float Utilization();  
+  float Utilization();
 
   // TODO: Declare any necessary private members
  private:
-    
 };
 
 #endif
