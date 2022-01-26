@@ -26,7 +26,7 @@ vector<Process>& System::Processes() {
     Process process(i);
     process.CpuUtilization();
     process.UpTime();
-    processes_.push_back(process);
+    processes_.emplace_back(process);
   }
   std::sort(processes_.begin(), processes_.end(), std::less<Process>());
   return processes_;
