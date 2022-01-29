@@ -1,6 +1,6 @@
 # CppND-System-Monitor
 
-System Monitor Project in the Object Oriented Programming Course of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). 
+System Monitor Project similar to HTOP in C++ for linux systems.
 
 
 ![System Monitor](images/monitor.png)
